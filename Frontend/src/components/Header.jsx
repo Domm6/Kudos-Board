@@ -4,7 +4,7 @@ import "./Header.css";
 const LOGO = "https://icons.iconarchive.com/icons/designbolts/free-valentine-heart/256/Heart-icon.png";
 
 
-function Header() {
+function Header({onOpen}) {
     return (
       <div className="header">
         <div className='header-logo'>
@@ -23,7 +23,7 @@ function Header() {
             <button type="submit" className='inspiration-button'>Inspiration</button>
         </div>
         <div className='header-create'>
-            <button type="submit" className='create-button'>Create A New Board</button>
+            <button type="submit" className='create-button' onClick={onOpen}>Create A New Board</button>
         </div>
       </div>
     );
