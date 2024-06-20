@@ -18,9 +18,22 @@ function App() {
           .then(data => setKudos(data))
           .catch(error => console.error('Error fetching Kudos:', error));
   }, []);
-  const addKudo = (newKudo) => {
+    const addKudo = (newKudo) => {
     setKudos(prevKudos => [...prevKudos, newKudo]);
   };
+
+  const deleteKudo = (kudoId) => {
+    fetch(`http://localhost:3000/boards/${kudoId}`, {
+      method: 'DELETE'
+    })
+    .then(response => {
+      if (response.ok) {
+        setKudos(prevKudos => prevKudos.filter(kudo => kudo.id !== kudoId));
+      }
+    })
+    .catch(error => console.error('Error deleting Kudo:', error));
+  }
+
   const openModal = () => {
     setIsModalVisible(true)
   }
@@ -32,7 +45,7 @@ function App() {
   return (
     <div className='App'>
       <Header onOpen={openModal} searchTerm={searchTerm} setSearchTerm={setSearchTerm} setFilter={setFilter}></Header>
-      <KudoList kudos={kudos} searchTerm={searchTerm} filter={filter}></KudoList>
+      <KudoList kudos={kudos} searchTerm={searchTerm} filter={filter} deleteKudo={deleteKudo}></KudoList>
       <Modal isOpen={isModalVisible} onClose={closeModal} addKudo={addKudo}></Modal>
       <Footer></Footer>
     </div>
