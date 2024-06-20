@@ -2,7 +2,48 @@ import { useState } from "react";
 import "./Modal.css"
 
 
-function Modal ({props, isOpen, onClose}) {
+function Modal ({props, isOpen, onClose, addKudo}) {
+    const [formData, setFormData] = useState({
+        title: "",
+        description: "",
+        kudo: "",
+        image: "",
+        author: ""
+    })
+
+    const [kudos, setKudos] = useState([]);
+
+    const handleChange = (e) => {
+        setFormData({...formData, [e.target.name]: e.target.value})
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // onFormSubmit(formData);
+
+        fetch('http://localhost:3000/boards', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                addKudo(data)
+                setFormData({
+                    title: "",
+                    description: "",
+                    kudo: "",
+                    image: "",
+                    author: ""
+                });
+            })
+            .catch(error => console.error('Error fetching Kudos:', error));
+
+        onClose();
+    }
 
     // add onChange functions to each of these inputs
     if(!isOpen) return null;
@@ -10,46 +51,44 @@ function Modal ({props, isOpen, onClose}) {
         <div className="modal">
             <div className="modal-content">
                 <span className="modal-close" onClick={onClose}>×</span>
-                <form className="modal-form">
+                <form className="modal-form" onSubmit={handleSubmit}>
                         <input
                             type="text"
                             name="title"
-                            value=''
-                            // onChange={handleChange}
+                            value={formData.title}
+                            onChange={handleChange}
                             required
                             placeholder="Title"
                         />
-                        <textarea
+                        {/* <textarea
                             name="description"
-                            value=""
-                            // onChange={handleChange}
+                            value={formData.description}
+                            onChange={handleChange}
                             required
                             placeholder="Description"
-                        />
+                        /> */}
                         <select
-                            name="category"
-                            value=""
-                            // value={formData.category}
+                            name="kudo"
+                            value={formData.kudo}
+                            onChange={handleChange}
                             required
                         >
                             <option value="">Select a Category</option>
-                            <option value="inpiration">Inspiration</option>
-                            <option value="celebration">Celebration</option>
-                            <option value="recent">Recent</option>
-                            <option value="thankyou">Thank You</option>
+                            <option value="Inspiration">Inspiration</option>
+                            <option value="Celebration">Celebration</option>
+                            <option value="Thank You">Thank You</option>
 
                         </select>
-                        <input
+                        {/* <input
                             type="file"
                             name="image"
-                            // onChange={handleChange}
-                            required
-                        />
+                            onChange={handleChange}
+                        /> */}
                         <input
                             type="text"
                             name="author"
-                            value=""
-                            // onChange={handleChange}
+                            value={formData.author}
+                            onChange={handleChange}
                             placeholder="Author (Optional)"
                         />
                         <button type="submit">Submit</button>

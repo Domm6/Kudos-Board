@@ -1,18 +1,21 @@
 import React from 'react';
 import "./Header.css";
 
-const LOGO = "https://icons.iconarchive.com/icons/designbolts/free-valentine-heart/256/Heart-icon.png";
+const LOGO = "https://i.vimeocdn.com/video/557834687-b8d55eb049d1702b589b4ad62c31fe18ac0f44f0316546d6aef20c61be70435c-d_640?f=webp";
 
 
-function Header({onOpen}) {
+function Header({onOpen, searchTerm, setSearchTerm}) {
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+    }
     return (
       <div className="header">
         <div className='header-logo'>
             <img src={LOGO} alt="" />
         </div>
         <div className='header-search'>
-            <form className="header-form">
-                <input name="search" className='search-bar' placeholder='Search baords...'/>
+            <form className="header-form" onSubmit={handleSearchSubmit}>
+                <input name="search" className='search-bar' placeholder='Search baords...' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
             </form>
         </div>
         <div className='header-filters'>

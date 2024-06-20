@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import KudoCard from './KudoCard';
-import "./KudoList.css"
+import "./KudoList.css";
 
-function KudoList() {
+function KudoList({kudos = [], searchTerm = ""}) {
+    const filteredKudos = kudos.filter(kudo => 
+        kudo.title && kudo.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
     return (
         <div className='kudo-list'>
-            <KudoCard title="Happy Birthday Dominic" type="Celebration"></KudoCard>
+            {filteredKudos.map(kudo => (
+                <KudoCard key={kudo.id} title={kudo.title} type={kudo.kudo} />
+            ))}
         </div>
-    )
+    );
 }
 
-export default KudoList
+export default KudoList;
