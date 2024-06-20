@@ -10,6 +10,7 @@ function App() {
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [kudos, setKudos] = useState([]);
   const [searchTerm, setSearchTerm] = useState("")
+  const [filter, setFilter] = useState("All")
 
   useEffect(() => {
       fetch('http://localhost:3000/boards')
@@ -30,8 +31,8 @@ function App() {
 
   return (
     <div className='App'>
-      <Header onOpen={openModal} searchTerm={searchTerm} setSearchTerm={setSearchTerm}></Header>
-      <KudoList kudos={kudos}></KudoList>
+      <Header onOpen={openModal} searchTerm={searchTerm} setSearchTerm={setSearchTerm} setFilter={setFilter}></Header>
+      <KudoList kudos={kudos} searchTerm={searchTerm} filter={filter}></KudoList>
       <Modal isOpen={isModalVisible} onClose={closeModal} addKudo={addKudo}></Modal>
       <Footer></Footer>
     </div>

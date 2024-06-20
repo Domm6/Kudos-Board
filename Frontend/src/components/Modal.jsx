@@ -11,8 +11,6 @@ function Modal ({props, isOpen, onClose, addKudo}) {
         author: ""
     })
 
-    const [kudos, setKudos] = useState([]);
-
     const handleChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value})
     }
@@ -39,10 +37,10 @@ function Modal ({props, isOpen, onClose, addKudo}) {
                     image: "",
                     author: ""
                 });
+                onClose();
             })
             .catch(error => console.error('Error fetching Kudos:', error));
 
-        onClose();
     }
 
     // add onChange functions to each of these inputs
@@ -60,13 +58,6 @@ function Modal ({props, isOpen, onClose, addKudo}) {
                             required
                             placeholder="Title"
                         />
-                        {/* <textarea
-                            name="description"
-                            value={formData.description}
-                            onChange={handleChange}
-                            required
-                            placeholder="Description"
-                        /> */}
                         <select
                             name="kudo"
                             value={formData.kudo}
@@ -74,16 +65,12 @@ function Modal ({props, isOpen, onClose, addKudo}) {
                             required
                         >
                             <option value="">Select a Category</option>
+                            <option value="Recent">Recent</option>
                             <option value="Inspiration">Inspiration</option>
                             <option value="Celebration">Celebration</option>
                             <option value="Thank You">Thank You</option>
 
                         </select>
-                        {/* <input
-                            type="file"
-                            name="image"
-                            onChange={handleChange}
-                        /> */}
                         <input
                             type="text"
                             name="author"

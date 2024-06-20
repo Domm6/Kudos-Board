@@ -4,10 +4,11 @@ import "./Header.css";
 const LOGO = "https://i.vimeocdn.com/video/557834687-b8d55eb049d1702b589b4ad62c31fe18ac0f44f0316546d6aef20c61be70435c-d_640?f=webp";
 
 
-function Header({onOpen, searchTerm, setSearchTerm}) {
+function Header({onOpen, searchTerm, setSearchTerm, setFilter}) {
     const handleSearchSubmit = (e) => {
         e.preventDefault();
     }
+    console.log("Current search term:", searchTerm); // Monitor search term updates
     return (
       <div className="header">
         <div className='header-logo'>
@@ -19,11 +20,11 @@ function Header({onOpen, searchTerm, setSearchTerm}) {
             </form>
         </div>
         <div className='header-filters'>
-            <button type="submit" className='all-button'>All</button>
-            <button type="submit" className='recent-button'>Recent</button>
-            <button type="submit" className='celebration-button'>Celebration</button>
-            <button type="submit" className='thankyou-button'>Thank You</button>
-            <button type="submit" className='inspiration-button'>Inspiration</button>
+            <button onClick={(e) => setFilter("All")} className='all-button'>All</button>
+            <button onClick={(e) => setFilter("Recent")} className='recent-button'>Recent</button>
+            <button onClick={(e) => setFilter("Celebration")} className='celebration-button'>Celebration</button>
+            <button onClick={(e) => setFilter("Thank You")} className='thankyou-button'>Thank You</button>
+            <button onClick={(e) => setFilter("Inspiration")} className='inspiration-button'>Inspiration</button>
         </div>
         <div className='header-create'>
             <button type="submit" className='create-button' onClick={onOpen}>Create A New Board</button>
