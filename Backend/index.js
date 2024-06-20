@@ -8,6 +8,8 @@ app.use(express.json())
 app.use(cors());
 const PORT = 3000
 
+const cardRoutes = require("./routes/cards")
+
 // get baords
 app.get('/boards', async (req,res) => {
     const board = await prisma.board.findMany()
@@ -19,8 +21,9 @@ app.get('/boards/:id', async (req, res) => {
     const { id } = req.params;
     const board = await prisma.board.findUnique({
         where: { id: parseInt(id) },
+        include: { cards: true }
     });
-    res.status(200).json(board); // Corrected variable name here
+    res.status(200).json(board);
 });
 
 // post board
@@ -30,7 +33,6 @@ app.post('/boards', async (req, res) => {
       data: {
         title,
         imageUrl,
-        cards,
         kudo
       }
     })
@@ -49,6 +51,9 @@ app.delete("/boards/:id", async (req, res) => {
         res.status(404).send('Board not found');
     }
 })
+
+app.use("/cards", cardRoutes)
+
 
 // run port
 app.listen(PORT, () => {
