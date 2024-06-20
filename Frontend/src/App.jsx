@@ -1,7 +1,8 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react'
+import BoardDetails from './components/BoardDetails';
 import './App.css'
 import Header from './components/Header'
-import KudoCard from './components/KudoCard'
 import KudoList from './components/KudoList'
 import Footer from './components/Footer'
 import Modal from './components/Modal'
@@ -43,12 +44,16 @@ function App() {
   }
 
   return (
-    <div className='App'>
-      <Header onOpen={openModal} searchTerm={searchTerm} setSearchTerm={setSearchTerm} setFilter={setFilter}></Header>
-      <KudoList kudos={kudos} searchTerm={searchTerm} filter={filter} deleteKudo={deleteKudo}></KudoList>
-      <Modal isOpen={isModalVisible} onClose={closeModal} addKudo={addKudo}></Modal>
-      <Footer></Footer>
-    </div>
+    <Router>
+        <div className='App'>
+          <Routes>
+            <Route path='/boards' element={<KudoList kudos={kudos} searchTerm={searchTerm} filter={filter} deleteKudo={deleteKudo} onOpen={openModal} setSearchTerm={setSearchTerm} setFilter={setFilter}></KudoList>} ></Route>
+            <Route path='/boards/:boardId' element={<BoardDetails></BoardDetails>}></Route>
+          </Routes>
+          <Modal isOpen={isModalVisible} onClose={closeModal} addKudo={addKudo}></Modal>
+          <Footer></Footer>
+      </div>
+    </Router>
   )
 }
 

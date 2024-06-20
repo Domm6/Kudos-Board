@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import './KudoCard.css'
+import { Link } from 'react-router-dom';
+
 
 const LOGO = "https://icons.iconarchive.com/icons/designbolts/free-valentine-heart/256/Heart-icon.png";
 
 
-function KudoCard ({title, type, deleteKudo}) {
+function KudoCard ({title, type, deleteKudo, id}) {
     return (
         <div className='kudo-card'>
             <div className='kc-img'>
@@ -17,7 +19,9 @@ function KudoCard ({title, type, deleteKudo}) {
                 <p>{type}</p>
             </div>
             <div className='kc-actions'>
-                <button type="button" className='kc-view-button'>View Board</button>
+                <Link to={`/boards/${id}`} className='create-button'>
+                    View
+                </Link>
                 <button type="button" className='kc-delete-button' onClick={() => deleteKudo()}>Delete Board</button>
             </div>
         </div>
