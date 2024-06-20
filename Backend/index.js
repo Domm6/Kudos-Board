@@ -23,7 +23,6 @@ app.get('/boards/:id', async (req, res) => {
     res.status(200).json(board); // Corrected variable name here
 });
 
-
 // post board
 app.post('/boards', async (req, res) => {
     const { title, imageUrl, cards, kudo } = req.body;
@@ -38,17 +37,18 @@ app.post('/boards', async (req, res) => {
     res.status(201).json(newBoard);
 });
 
-// router.delete("/:petId", async (req, res) => {
-//     const { petId } = req.params;
-//     try {
-//         const deletedPet = await prisma.pet.delete({
-//             where: { id: parseInt(petId) }
-//         });
-//         res.status(204).send();
-//     } catch (error) {
-//         res.status(404).send('Pet not found');
-//     }
-// })
+// delete board
+app.delete("/boards/:id", async (req, res) => {
+    const { id } = req.params
+    const deletedBoard = await prisma.board.delete({
+        where: { id: parseInt(id) },
+    });
+    if (deletedBoard) {
+        res.status(204).send();
+    } else {
+        res.status(404).send('Board not found');
+    }
+})
 
 // run port
 app.listen(PORT, () => {
