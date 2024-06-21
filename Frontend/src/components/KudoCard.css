@@ -3,8 +3,6 @@
     margin: 10px;
     padding: 12px;
     border-radius: 8px;
-    width: 200px;
-    height: 420px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
@@ -13,6 +11,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+}
+
+@media (min-width: 600px) {
+    .kudo-card {
+        flex: 0 0 30%;
+        max-width: 260px;
+    }
 }
 
 .kudo-card:hover {
@@ -36,9 +44,13 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    padding: 0 10px;
 }
 
 .kc-delete-button {
+    flex: 1 1 auto;
+    margin: 5px;
+    text-align: center;
     background-color: green;
     color: white ;
 }
@@ -50,6 +62,11 @@
     margin: 5px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    flex: 1 1 auto;
+    margin: 5px;
+    text-align: center;
+    background-color: grey;
+    color: white ;
   }
   
 .view-button:hover {

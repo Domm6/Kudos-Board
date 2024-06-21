@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react'
 import "./BoardDetails.css";
 import BoardCard from './BoardCard';
 import CardModal from './CardModal';
+import { Link } from 'react-router-dom';
+
 
 const LOGO = "https://i.vimeocdn.com/video/557834687-b8d55eb049d1702b589b4ad62c31fe18ac0f44f0316546d6aef20c61be70435c-d_640?f=webp";
 
@@ -26,7 +28,7 @@ function BoardDetails () {
     }, [boardId]);
 
     const addCard = (newCard) => {
-        setKudos(prevCards => [...prevCards, newCard]);
+        setCards(prevCards => [...prevCards, newCard]);
     };
     
 
@@ -82,16 +84,19 @@ function BoardDetails () {
                     <img src={LOGO} alt="" />
                 </div>
                 <div className='header-create'>
+                    <Link to={`/boards`} className='view-button'>
+                        Back
+                    </Link>
                     <button type="submit" className='create-button' onClick={openCardModal}>Create A New Card</button>
                 </div>
             </div>
         </div>
         <div className="board-details">
             {cards.map(card => (
-                <BoardCard deleteCard={() => deleteCard(card.id)} likeCard={() => likeCard(card.id)} key={card.id} title={card.title} likes={card.likes}/>
+                <BoardCard deleteCard={() => deleteCard(card.id)} likeCard={() => likeCard(card.id)} key={card.id} title={card.title} likes={card.likes} gifUrl={card.gifUrl}/>
             ))}
         </div>
-        <CardModal isOpen={isCardModalVisible} onClose={closeCardModal} addCard={addCard}></CardModal>
+        <CardModal isOpen={isCardModalVisible} onClose={closeCardModal} addCard={addCard} boardId={boardId}></CardModal>
         </>
     )
 }

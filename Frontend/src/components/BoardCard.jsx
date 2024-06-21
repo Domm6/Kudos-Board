@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import './BoardCard.css'
 
-const LOGO = "https://icons.iconarchive.com/icons/designbolts/free-valentine-heart/256/Heart-icon.png";
+const LOGO = "https://www.svgrepo.com/show/340721/no-image.svg";
 
 
-function BoardCard ({title, deleteCard, likes, likeCard}) {
+function BoardCard ({title, deleteCard, likes, likeCard, gifUrl}) {
     return (
         <div className='board-card'>
             <div className='board-img'>
-                <img src={LOGO} alt="" />
+                <img src={gifUrl || LOGO} alt="" />
             </div>
             <div className='bc-title'>
                 <h3>{title}</h3>

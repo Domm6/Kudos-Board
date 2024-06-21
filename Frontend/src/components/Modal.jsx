@@ -17,7 +17,6 @@ function Modal ({props, isOpen, onClose, addKudo}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // onFormSubmit(formData);
 
         fetch('http://localhost:3000/boards', {
             method: 'POST',
