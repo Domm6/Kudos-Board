@@ -19,7 +19,7 @@ function KudoCard ({title, type, deleteKudo, id}) {
                 <p>{type}</p>
             </div>
             <div className='kc-actions'>
-                <Link to={`/boards/${id}`} className='create-button'>
+                <Link to={`/boards/${id}`} className='view-button'>
                     View
                 </Link>
                 <button type="button" className='kc-delete-button' onClick={() => deleteKudo()}>Delete Board</button>
