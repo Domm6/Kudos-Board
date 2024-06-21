@@ -57,4 +57,22 @@ router.delete("/:cardId", async (req, res) => {
     }
 })
 
+// like card
+router.patch("/:cardId/like", async (req, res) => {
+    try{
+        const cardId = req.params.cardId
+        console.log(cardId)
+        const updatedCard = await prisma.card.update({
+          where: { id: parseInt(cardId) },
+          data: {
+            likes: {increment: 1}
+          }
+        })
+        res.json(updatedCard)
+    } catch (error) {
+        console.error("Failed to like", error)
+        res.status(500).send("Error updating likes")
+    }
+})
+
 module.exports = router

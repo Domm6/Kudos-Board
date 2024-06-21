@@ -19,7 +19,8 @@ function App() {
           .then(data => setKudos(data))
           .catch(error => console.error('Error fetching Kudos:', error));
   }, []);
-    const addKudo = (newKudo) => {
+  
+  const addKudo = (newKudo) => {
     setKudos(prevKudos => [...prevKudos, newKudo]);
   };
 
