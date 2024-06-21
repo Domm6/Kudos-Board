@@ -58,3 +58,12 @@ select {
     margin: 10px;
     padding: 10px;
 }
+
+.card-modal-gif {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; 
+    padding: 10px;
+    max-height: 100px;
+    overflow-y: auto;
+}

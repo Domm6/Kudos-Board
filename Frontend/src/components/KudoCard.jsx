@@ -3,14 +3,11 @@ import './KudoCard.css'
 import { Link } from 'react-router-dom';
 
 
-const LOGO = "https://icons.iconarchive.com/icons/designbolts/free-valentine-heart/256/Heart-icon.png";
-
-
 function KudoCard ({title, type, deleteKudo, id}) {
     return (
         <div className='kudo-card'>
             <div className='kc-img'>
-                <img src={LOGO} alt="" />
+                <img src={`https://picsum.photos/200/300?${id}`} alt="" />
             </div>
             <div className='kc-title'>
                 <h3>{title}</h3>

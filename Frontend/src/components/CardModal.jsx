@@ -2,14 +2,27 @@ import { useState } from "react";
 import "./CardModal.css"
 
 
-function CardModal ({props, isOpen, onClose, addKudo}) {
+function CardModal ({props, isOpen, onClose, addCard, boardId}) {
     const [formData, setFormData] = useState({
         title: "",
         description: "",
-        kudo: "",
-        gif: "",
+        gifUrl: "",
         author: ""
     })
+
+    const [searchTerm, setSearchTerm] = useState("");
+    const [gifs, setGifs] = useState([]);
+    const API_KEY = 'LOVvDZw8dwqMxR4ddeoRdwA6Bt7wGbwK';
+
+    const fetchGifs = () => {
+        const url = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${searchTerm}&limit=6`;
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                setGifs(data.data);
+            })
+            .catch(error => console.error('Error fetching GIFs:', error));
+    };
 
     const handleChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value})
@@ -17,24 +30,31 @@ function CardModal ({props, isOpen, onClose, addKudo}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (!formData.gifUrl) {
+            setSubmitAttempted(true);
+            return;
+        }
+        const cardData = {
+            ...formData,
+            boardId: parseInt(boardId, 10)
+        };
 
-        fetch('http://localhost:3000/boards', {
+        fetch('http://localhost:3000/cards', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(formData)
+            body: JSON.stringify(cardData)
         })
             .then(response => response.json())
             .then(data => {
                 console.log('Success:', data);
-                addKudo(data)
+                addCard(data)
                 setFormData({
                     title: "",
                     description: "",
-                    gif: "",
-                    image: "",
-                    author: ""
+                    gifUrl: "",
+                    author: "",
                 });
                 onClose();
             })
@@ -68,12 +88,23 @@ function CardModal ({props, isOpen, onClose, addKudo}) {
                         <input
                             type="text"
                             name="gif"
-                            value={formData.gif}
-                            onChange={handleChange}
+                            value={searchTerm}
+                            onChange={e => setSearchTerm(e.target.value)}
                             required
                             placeholder="gif"
                         />
-                        <button>Search</button>
+                        <button type="button" onClick={fetchGifs}>Search</button>
+                        <div className="card-modal-gif">
+                            {gifs.map(gif => (
+                                <img
+                                    key={gif.id}
+                                    src={gif.images.fixed_height_small.url}
+                                    alt={gif.title}
+                                    onClick={() => setFormData({ ...formData, gifUrl: gif.images.fixed_height.url })}
+                                    required
+                                />
+                            ))}
+                        </div>
                         <input
                             type="text"
                             name="author"
@@ -81,7 +112,7 @@ function CardModal ({props, isOpen, onClose, addKudo}) {
                             onChange={handleChange}
                             placeholder="Author (Optional)"
                         />
-                        <button type="submit">Submit</button>
+                        <button type="submit" disabled={!formData.gifUrl}>Submit</button>
                 </form>
             </div>
         </div>

@@ -34,6 +34,8 @@ model Board {
 model Card {
   id        Int      @id @default(autoincrement())
   title   String
+  description String
+  author String
   gifUrl String
   boardId   Int
   board     Board    @relation(fields: [boardId], references: [id], onDelete: Cascade)
