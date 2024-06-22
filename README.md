@@ -2,8 +2,6 @@
 
 Submitted by: **Dominic Parker**
 
-Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
-
 ### Application Features
 
 #### CORE FEATURES
