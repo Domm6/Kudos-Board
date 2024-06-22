@@ -18,7 +18,7 @@ function BoardDetails () {
     const [selectedCardId, setSelectedCardId] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/boards/${boardId}`)
+        fetch(`https://kudos-board-backend-i44b.onrender.com/boards/${boardId}`)
           .then(response => response.json())
           .then(data => {
             if (data && data.cards) {
@@ -36,7 +36,7 @@ function BoardDetails () {
     };
     
     const deleteCard = (cardId) => {
-        fetch(`http://localhost:3000/cards/${cardId}`, {
+        fetch(`https://kudos-board-backend-i44b.onrender.com/cards/${cardId}`, {
           method: 'DELETE'
         })
         .then(response => {
@@ -48,7 +48,7 @@ function BoardDetails () {
     }
 
     const likeCard = (cardId) => {
-        fetch(`http://localhost:3000/cards/${cardId}/like`, {
+        fetch(`https://kudos-board-backend-i44b.onrender.com/cards/${cardId}/like`, {
             method: 'PATCH',
             headers: {
                 'Content-type': 'application/json'

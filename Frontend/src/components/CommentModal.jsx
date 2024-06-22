@@ -7,7 +7,7 @@ function CommentModal ({props, isOpen, onClose, gifUrl, cardId}) {
 
     useEffect(() => {
         if (isOpen) {
-            fetch(`http://localhost:3000/cards/${cardId}/comments`)
+            fetch(`https://kudos-board-backend-i44b.onrender.com/cards/${cardId}/comments`)
                 .then(response => response.json())
                 .then(data => setComments(data))
                 .catch(error => console.error('Error fetching comments:', error));
@@ -23,7 +23,7 @@ function CommentModal ({props, isOpen, onClose, gifUrl, cardId}) {
             text: commentText,
             author: "Anonymous"
         };
-        fetch(`http://localhost:3000/cards/${cardId}/comments`, {
+        fetch(`https://kudos-board-backend-i44b.onrender.com/cards/${cardId}/comments`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
