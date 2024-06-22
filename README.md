@@ -49,7 +49,14 @@ Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
 ### Walkthrough Video
 
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/5141db408ba5490dbcf936cc576fbd35?sid=2f5a5614-9563-4acf-9c14-129c6e45343f" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div>
+    <a href="https://www.loom.com/share/5141db408ba5490dbcf936cc576fbd35">
+      <p>Loom Message - 21 June 2024 - Watch Video</p>
+    </a>
+    <a href="https://www.loom.com/share/5141db408ba5490dbcf936cc576fbd35">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/5141db408ba5490dbcf936cc576fbd35-with-play.gif">
+    </a>
+  </div>
 
 ### Reflection
 
