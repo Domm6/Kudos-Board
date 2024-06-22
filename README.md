@@ -2,6 +2,8 @@
 
 Submitted by: **Dominic Parker**
 
+Deployed Application (optional): [Kudos Board Deployed Site](https://kudos-board-ssrf.onrender.com/#/)
+
 ### Application Features
 
 #### CORE FEATURES
@@ -38,8 +40,8 @@ Submitted by: **Dominic Parker**
     - [ ]  Anonymous cards or cards by guest users should still be allowed.
   - [ ] Add a new filter option on the home page to display only the current user's boards.
   - [ ] Allow boards to be deleted only if they are owned by the user.
-- [ ] **Deployment**
-  - [ ] Website is deployed via Render.
+- [x] **Deployment**
+  - [x] Website is deployed via Render.
 - [x] **Comments**
   - [x] Users should be able to comment on cards.
 
