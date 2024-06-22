@@ -60,7 +60,7 @@ Submitted by: **Dominic Parker**
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-I think the time in class was not enough to be able to give an in depth explanation of exaclty how a backend works and how it connects to the front end. The labs made up for this a little through a deeper explanaition and helped me understand endpoints as well a prisma better. One thing that was not talked about at all, but that we had to learn was React Routing. Through the use of online resoures, my classmates, and the instructors, I was able to learn in on the go.
+I think the time in class was not enough to be able to give an in depth explanation of exaclty how a backend works and how it connects to the front end. The labs made up for this a little through a deeper explanaition and helped me understand endpoints as well a prisma better. One thing that was not talked about at all, but that we had to learn was React Routing. Through the use of online resoures, my classmates, and the instructors, I was able to learn it on the go.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
