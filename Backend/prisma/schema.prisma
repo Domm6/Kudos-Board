@@ -40,5 +40,14 @@ model Card {
   boardId   Int
   board     Board    @relation(fields: [boardId], references: [id], onDelete: Cascade)
   likes Int          @default(0)
+  comments Comment[]
+}
+
+model Comment {
+  id      Int    @id @default(autoincrement())
+  text    String
+  author  String
+  cardId  Int
+  card    Card   @relation(fields: [cardId], references: [id], onDelete: Cascade)
 }
 
