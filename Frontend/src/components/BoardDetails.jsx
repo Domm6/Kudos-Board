@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import "./BoardDetails.css";
 import BoardCard from './BoardCard';
 import CardModal from './CardModal';
+import CommentModal from './CommentModal'
 import { Link } from 'react-router-dom';
 
 
@@ -10,8 +11,11 @@ const LOGO = "https://i.vimeocdn.com/video/557834687-b8d55eb049d1702b589b4ad62c3
 
 function BoardDetails () {
     const [isCardModalVisible, setIsCardModalVisible] = useState(false)
+    const [isCommentModalVisible, setIsCommentModalVisible] = useState(false)
     const {boardId} = useParams();
     const [cards, setCards] = useState([])
+    const [selectedGifUrl, setSelectedGifUrl] = useState('');
+    const [selectedCardId, setSelectedCardId] = useState(null);
 
     useEffect(() => {
         fetch(`http://localhost:3000/boards/${boardId}`)
@@ -31,7 +35,6 @@ function BoardDetails () {
         setCards(prevCards => [...prevCards, newCard]);
     };
     
-
     const deleteCard = (cardId) => {
         fetch(`http://localhost:3000/cards/${cardId}`, {
           method: 'DELETE'
@@ -76,6 +79,16 @@ function BoardDetails () {
         setIsCardModalVisible(false)
     }
 
+    const openCommentModal = (gifUrl, cardId) => {
+        setSelectedCardId(cardId)
+        setSelectedGifUrl(gifUrl);
+        setIsCommentModalVisible(true)
+    }
+
+    const closeCommentModal = () => {
+        setIsCommentModalVisible(false)
+    }
+
     return (
         <>
         <div className='header-board'>
@@ -93,10 +106,11 @@ function BoardDetails () {
         </div>
         <div className="board-details">
             {cards.map(card => (
-                <BoardCard deleteCard={() => deleteCard(card.id)} likeCard={() => likeCard(card.id)} key={card.id} title={card.title} likes={card.likes} gifUrl={card.gifUrl}/>
+                <BoardCard deleteCard={() => deleteCard(card.id)} likeCard={() => likeCard(card.id)} key={card.id} title={card.title} likes={card.likes} gifUrl={card.gifUrl} onClick={() => openCommentModal(card.gifUrl, card.id)}/>
             ))}
         </div>
         <CardModal isOpen={isCardModalVisible} onClose={closeCardModal} addCard={addCard} boardId={boardId}></CardModal>
+        <CommentModal isOpen={isCommentModalVisible} onClose={closeCommentModal} gifUrl={selectedGifUrl} cardId={selectedCardId}></CommentModal>
         </>
     )
 }

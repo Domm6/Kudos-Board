@@ -77,4 +77,40 @@ router.patch("/:cardId/like", async (req, res) => {
     }
 })
 
+// post comment
+router.post('/:cardId/comments', async (req, res) => {
+    const { cardId } = req.params;
+    const cardIdNumber = parseInt(cardId, 10);
+    const { text, author } = req.body;
+    try {
+      const comment = await prisma.comment.create({
+        data: {
+            text: text,
+            author: author || "Anonymous", // Default to "Anonymous" if no author is provided
+            cardId: cardIdNumber,
+        },
+      });
+      res.status(201).json(comment);
+    } catch (error) {
+      console.error('Failed to create comment:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+  
+  // get a comment
+  router.get('/:cardId/comments', async (req, res) => {
+    const cardId = parseInt(req.params.cardId, 10);
+    try {
+      const comments = await prisma.comment.findMany({
+        where: {
+          cardId: cardId,
+        }
+      });
+      res.json(comments);
+    } catch (error) {
+      console.error('Failed to get comments:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+
 module.exports = router
