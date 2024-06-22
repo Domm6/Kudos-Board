@@ -48,7 +48,7 @@ function App() {
     <Router>
         <div className='App'>
           <Routes>
-            <Route path='/boards' element={<KudoList kudos={kudos} searchTerm={searchTerm} filter={filter} deleteKudo={deleteKudo} onOpen={openModal} setSearchTerm={setSearchTerm} setFilter={setFilter}></KudoList>} ></Route>
+            <Route path='/' element={<KudoList kudos={kudos} searchTerm={searchTerm} filter={filter} deleteKudo={deleteKudo} onOpen={openModal} setSearchTerm={setSearchTerm} setFilter={setFilter}></KudoList>} ></Route>
             <Route path='/boards/:boardId' element={<BoardDetails></BoardDetails>}></Route>
           </Routes>
           <Modal isOpen={isModalVisible} onClose={closeModal} addKudo={addKudo}></Modal>
