@@ -56,15 +56,15 @@ Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+I think the time in class was not enough to be able to give an in depth explanation of exaclty how a backend works and how it connects to the front end. The labs made up for this a little through a deeper explanaition and helped me understand endpoints as well a prisma better. One thing that was not talked about at all, but that we had to learn was React Routing. Through the use of online resoures, my classmates, and the instructors, I was able to learn in on the go.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-Add your response here
+If I had more time, I would have structured my project differently in order to be able to see how everything connects with one another easier. I wouuld have also improved the design and spent more time using css to make my sight look better.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+
 
 ### Open-source libraries used
 
@@ -72,4 +72,4 @@ Add your response here
 
 ### Shout out
 
-Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+I would like to shout out Bryan as well as everyone at my table who helped me debug and set up the endpoints for my project! They were super helpful.
