@@ -97,7 +97,7 @@ function BoardDetails () {
                     <img src={LOGO} alt="" />
                 </div>
                 <div className='header-create'>
-                    <Link to={`/boards`} className='view-button'>
+                    <Link to={`/`} className='view-button'>
                         Back
                     </Link>
                     <button type="submit" className='create-button' onClick={openCardModal}>Create A New Card</button>
