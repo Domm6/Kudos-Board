@@ -70,7 +70,7 @@ If I had more time, I would have structured my project differently in order to b
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-
+My project demo went how I expected it to go. I was able to succesfully demo all the featuers that I accomplished and they worked as I thought. Next project I would like to try to deploy my website if I have the time.
 
 ### Open-source libraries used
 
