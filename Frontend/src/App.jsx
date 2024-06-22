@@ -14,7 +14,7 @@ function App() {
   const [filter, setFilter] = useState("All")
 
   useEffect(() => {
-      fetch('http://localhost:3000/boards')
+      fetch('https://kudos-board-backend-i44b.onrender.com/boards')
           .then(response => response.json())
           .then(data => setKudos(data))
           .catch(error => console.error('Error fetching Kudos:', error));
@@ -25,7 +25,7 @@ function App() {
   };
 
   const deleteKudo = (kudoId) => {
-    fetch(`http://localhost:3000/boards/${kudoId}`, {
+    fetch(`https://kudos-board-backend-i44b.onrender.com/boards/${kudoId}`, {
       method: 'DELETE'
     })
     .then(response => {

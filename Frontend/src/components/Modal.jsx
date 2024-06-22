@@ -18,7 +18,7 @@ function Modal ({props, isOpen, onClose, addKudo}) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch('http://localhost:3000/boards', {
+        fetch('https://kudos-board-backend-i44b.onrender.com/boards', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -39,7 +39,7 @@ function CardModal ({props, isOpen, onClose, addCard, boardId}) {
             boardId: parseInt(boardId, 10)
         };
 
-        fetch('http://localhost:3000/cards', {
+        fetch('https://kudos-board-backend-i44b.onrender.com/cards', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
